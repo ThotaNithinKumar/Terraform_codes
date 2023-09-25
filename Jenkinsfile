@@ -4,8 +4,8 @@ pipeline {
         stage('Group Creation') {
             steps {
                 sh '''
-                groupadd -g 2332 Testers
-                cat /etc/group|grep 2332
+                groupadd -g 2331 Tester
+                cat /etc/group|grep 2331
                 '''
             }
         }
