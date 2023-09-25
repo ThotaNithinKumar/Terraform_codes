@@ -1,4 +1,5 @@
 #!/bin/bash
 groupadd test
 echo "Test group Created"
-echo "$(cat /etc/group|grep test)"
+res=$(cat /etc/group|grep test)
+echo "$res"
