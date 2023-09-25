@@ -5,7 +5,7 @@ pipeline {
             steps {
                 sh '''
                 sudo groupadd -g 1312 Test
-                cat /etc/group|grep Test
+                cat /etc/group|grep 1312
                 '''
             }
         }
