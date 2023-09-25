@@ -1,5 +1,5 @@
 #!/bin/bash
-groupadd -g 1357 test
+groupadd test
 if [$?==0]
 then
   echo "Test Group Created"
