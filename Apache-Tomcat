@@ -1,0 +1,38 @@
+pipeline {
+    agent any
+    stages {
+        stage('Installing Docker') {
+            steps {
+                sh '''
+                sudo yum install docker
+                docker --version
+                '''
+            }
+        }
+        stage('Pulling Dockerfile') {
+            steps {
+                sh '''
+                sudo git clone https://github.com/ThotaNithinKumar/Terraform_codes
+                cd Terraform_codes
+                sudo chmod +x Dockerfile
+                '''
+            }
+        }
+        stage('Building Tomcat image') {
+            steps {
+                sh '''
+                docker build -t nithin/tomcat9 .
+                docker image ls nithin/tomcat9
+                '''
+            }
+        }
+        stage('Running Tomcat image') {
+            steps {
+                sh '''
+                docker container run -it -d – name tomcatcontainer1 -p 8081:8080 nithin/tomcat9
+                docker ps
+                '''
+            }
+        }
+    }
+}
