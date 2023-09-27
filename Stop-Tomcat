@@ -1,0 +1,13 @@
+pipeline {
+    agent any
+    stages {
+        stage('To stop Tomcat') {
+            steps {
+                sh '''
+                ID=($(docker ps -a|grep nithin/tomcat9|awk '{print $1}'))
+                docker stop ${ID[0]}
+                '''
+            }
+        }
+    }
+}
