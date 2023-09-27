@@ -4,6 +4,7 @@ pipeline {
         stage('To stop Tomcat') {
             steps {
                 sh '''
+                sudo chmod 666 /var/run/docker.sock
                 ID=($(docker ps -a|grep nithin/tomcat9|awk '{print $1}'))
                 docker stop ${ID[0]}
                 '''
