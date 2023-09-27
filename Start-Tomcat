@@ -1,0 +1,13 @@
+pipeline {
+    agent any
+    stages {
+        stage('To start Tomcat') {
+            steps {
+                sh '''
+                ID=($(docker ps -a|grep nithin/tomcat9|awk '{print $1}'))
+                docker start ${ID[0]}
+                '''
+            }
+        }
+    }
+}
